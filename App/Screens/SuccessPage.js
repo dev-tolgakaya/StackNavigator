@@ -11,6 +11,7 @@ class SuccessPage extends Component {
             <View style={styles.body}>
                 <Navbar/>
                 <Input/>
+
                 <View style={styles.imageContainer}>
                     <Image style={styles.imageStyle} source={ok}/>
                 </View>
