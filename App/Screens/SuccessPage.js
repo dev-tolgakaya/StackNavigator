@@ -1,22 +1,28 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TextInput, Text,TouchableOpacity,Image} from 'react-native';
+import {View, StyleSheet, Text,TouchableOpacity,Image} from 'react-native';
 import Navbar from './Navbar'
-import Input from "./Input"
+import Input from './Input';
 import ok from '../Assets/ok.png'
 
 
 class SuccessPage extends Component {
     render() {
         return (
-            <View style={{backgroundColor: "#D6E3F9", height: 1000}}>
+            <View style={styles.body}>
                 <Navbar/>
                 <Input/>
                 <View style={styles.imageContainer}>
-                    <Image style={{height:300,width:300}} source={ok}/>
+                    <Image style={styles.imageStyle} source={ok}/>
                 </View>
-                <View style={{alignItems: 'center',justifyContent: 'center'}}><Text style={{fontSize:28,color:'#3B4CDE',fontWeight: 'bold'}}>Derdini Paylaştın!</Text></View>
-                <View style={{alignItems: 'center',justifyContent: 'center',marginTop:10}}><Text style={{fontSize:20,color:'#3B4CDE',fontWeight: 'bold'}}>Onaylandıktan sonra yayınlanacak!</Text></View>
-                <TouchableOpacity  onPress={()=>this.props.navigation.navigate('HomePage')} style={styles.buttonContainer}><Text style={{ fontSize : 20,color:'white'}}>Anasayfaya Dön</Text></TouchableOpacity>
+                <View style={styles.textContainer}>
+                    <Text style={styles.text1}>Derdini Paylaştın!</Text>
+                </View>
+                <View style={styles.textContainer}>
+                    <Text style={styles.text2}>Onaylandıktan sonra yayınlanacak!</Text>
+                </View>
+                <TouchableOpacity  onPress={()=>this.props.navigation.navigate('HomePage')} style={styles.buttonContainer}>
+                    <Text style={styles.homepageBtnText}>Anasayfaya Dön</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -41,6 +47,32 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         alignItems:'center',
         justifyContent:'center',
+    },
+    imageStyle : {
+        height:200,
+        width:200
+    },
+    textContainer : {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    homepageBtnText : {
+        fontSize : 20,
+        color:'white'
+    },
+    text1 : {
+        fontSize:28,
+        color:'#3B4CDE',
+        fontWeight: 'bold'
+    },
+    text2 : {
+        fontSize:20,
+        color:'#3B4CDE',
+        fontWeight: 'bold'
+    },
+    body: {
+        backgroundColor: '#D6E3F9',
+        height: 1000
     }
 })
 

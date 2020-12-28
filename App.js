@@ -13,14 +13,7 @@ function NavStack() {
         <Stack.Navigator
             initialRouteName="HomePage"
             screenOptions={{
-                headerTitleAlign: 'center',
-                headerStyle: {
-                    backgroundColor: '#D6E3F9',
-                },
-                headerTintColor: '#3B4CDE',
-                headerTitleStyle :{
-                    fontWeight: 'bold',
-                },
+                headerShown: false
             }}
         >
             <Stack.Screen name="HomePage" component={HomePage} />
@@ -33,7 +26,7 @@ function NavStack() {
 
 export default function App() {
     return (
-            <NavigationContainer  style={{backgroundColor: "#D6E3F9", height: 1000}}>
+            <NavigationContainer>
                 <NavStack />
             </NavigationContainer>
     );

@@ -1,27 +1,28 @@
-import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import Logo from "../Assets/logo.png"
-
 
 
 class Navbar extends Component {
     render() {
         return (
             <View style={styles.sectionContainer}>
-                <View style={{flexDirection:'row'}}>
-                <Image  source={Logo} style={styles.logo}></Image>
-                <Text style={{marginTop:30,marginLeft:10,fontSize:30,fontWeight: 'bold',color:'#3B4CDE'}}>derdana</Text>
+                <View style={{flexDirection: 'row'}}>
+                    <Image source={Logo} style={styles.logo}/>
+                    <Text style={styles.headerTitle}>derdana</Text>
                 </View>
             </View>
         );
     }
 }
+
 const styles = StyleSheet.create({
 
     sectionContainer: {
         paddingHorizontal: 24,
-        justifyContent : "center",
-        alignItems : "flex-start"
+        justifyContent: "center",
+        alignItems: "flex-start",
+        marginTop: 30
 
     },
     logo: {
@@ -29,6 +30,13 @@ const styles = StyleSheet.create({
         height: 50,
         marginTop: 20,
 
+    },
+    headerTitle: {
+        marginTop: 30,
+        marginLeft: 10,
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#3B4CDE'
     }
 });
 

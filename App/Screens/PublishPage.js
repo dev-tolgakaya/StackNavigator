@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TextInput, Text,TouchableOpacity} from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
+import {View, StyleSheet, TextInput, Text, TouchableOpacity} from 'react-native';
 import Navbar from './Navbar'
 import Input from "./Input"
 
@@ -8,25 +7,27 @@ class HomePage extends Component {
 
     render() {
         return (
-            <View style={{backgroundColor: "#D6E3F9", height: 1000}}>
+            <View style={styles.body}>
                 <Navbar/>
                 <Input/>
-                <Text style={{paddingHorizontal: 20, marginTop: 20, fontSize: 15,color: '#3B4CDE', fontWeight: 'bold'}}>Başlık</Text>
+                <Text style={styles.textLabel}>Başlık</Text>
                 <View style={styles.inputContainer}>
                     <TextInput
-                        style={{flex: 9, fontSize: 20, fontWeight: 'bold'}}
+                        style={styles.textInput}
                         multiline={true}
                     />
                 </View>
-                <Text style={{paddingHorizontal: 20, marginTop: 20, fontSize: 15,color: '#3B4CDE', fontWeight: 'bold'}}>Açıklama</Text>
+                <Text style={styles.textLabel}>Açıklama</Text>
                 <View style={styles.TextAria}>
                     <TextInput
-                        style={{flex: 9, fontSize: 20, fontWeight: 'bold'}}
+                        style={styles.textInput}
                         multiline={true}
                         numberOfLines={10}
                     />
                 </View>
-                <TouchableOpacity  onPress={()=>this.props.navigation.navigate('Success')} style={styles.buttonContainer}><Text style={{ fontSize : 22,color:'white'}}>PAYLAŞ</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Success')}
+                                  style={styles.buttonContainer}><Text
+                    style={styles.publishButton}>PAYLAŞ</Text></TouchableOpacity>
             </View>
         );
     }
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         height: 70,
         borderRadius: 15,
-        alignItems:'center'
+        alignItems: 'center'
     },
     TextAria: {
         paddingHorizontal: 15,
@@ -59,8 +60,28 @@ const styles = StyleSheet.create({
         backgroundColor: '#3B4CDE',
         height: 70,
         borderRadius: 15,
-        alignItems:'center',
-        justifyContent:'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    textLabel: {
+        paddingHorizontal: 20,
+        marginTop: 20,
+        fontSize: 15,
+        color: '#3B4CDE',
+        fontWeight: 'bold'
+    },
+    textInput: {
+        flex: 9,
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    publishButton : {
+        fontSize: 22,
+        color: 'white'
+    },
+    body: {
+        backgroundColor: '#D6E3F9',
+        height: 1000
     }
 })
 
