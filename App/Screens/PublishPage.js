@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, TextInput, Text, TouchableOpacity} from 'react-native';
-import Navbar from './Navbar'
-import Input from "./Input"
+import {View, StyleSheet, TextInput, Text, TouchableOpacity, Image} from 'react-native';
+import Navbar from '../Components/Navbar'
+import Input from "../Components/Input"
+import IconBtn from '../Assets/IconBtn.png'
+import Switch from '../Assets/Switch.png'
 
 class HomePage extends Component {
 
@@ -25,9 +27,15 @@ class HomePage extends Component {
                         numberOfLines={10}
                     />
                 </View>
+                <View style={styles.switchContainer}>
+                    <Image source={Switch}/>
+                    <Text style={styles.switchText}>Kullanım ve gizlilik koşullarını kabul ediyorum.</Text>
+                </View>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Success')}
-                                  style={styles.buttonContainer}><Text
-                    style={styles.publishButton}>PAYLAŞ</Text></TouchableOpacity>
+                                  style={styles.buttonContainer}>
+                    <Text style={styles.publishButton}>Gönder</Text>
+                    <Image style={{width:10,height:17}} source={IconBtn}/>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -39,6 +47,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         padding: 10,
         margin: 20,
+        marginTop: 0,
         backgroundColor: 'white',
         height: 70,
         borderRadius: 15,
@@ -48,6 +57,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         padding: 10,
         margin: 20,
+        marginTop: 0,
         backgroundColor: 'white',
         height: 180,
         borderRadius: 15,
@@ -58,29 +68,38 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 20,
         backgroundColor: '#3B4CDE',
-        height: 70,
+        height: 45,
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
     },
     textLabel: {
-        paddingHorizontal: 20,
+        paddingHorizontal: 13,
         marginTop: 20,
         fontSize: 15,
-        color: '#3B4CDE',
-        fontWeight: 'bold'
+        color: '#234CAD',
     },
     textInput: {
         flex: 9,
         fontSize: 20,
         fontWeight: 'bold'
     },
-    publishButton : {
-        fontSize: 22,
-        color: 'white'
+    switchContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    switchText: {
+        fontSize: 15,
+        color: '#234CAD'
+    },
+    publishButton: {
+        fontSize: 24,
+        color: 'white',
+
     },
     body: {
-        backgroundColor: '#D6E3F9',
+        backgroundColor: '#F2F6FF',
         height: 1000
     }
 })

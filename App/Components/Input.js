@@ -21,15 +21,14 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 20,
         backgroundColor: 'white',
-        height: 70,
+        height: 65,
         alignItems: 'center'
     },
     textStyle: {
         flex: 9,
-        fontSize: 20,
+        fontSize: 24,
         justifyContent: 'center',
-        fontWeight: 'bold',
-        color: '#3B4CDE'
+        color: '#234CAD'
     }
 })
 export default Input;

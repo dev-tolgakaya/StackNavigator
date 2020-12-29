@@ -5,29 +5,64 @@ import {
     Image,
     StyleSheet,
     TextInput,
+    ScrollView,
+    SafeAreaView
 } from 'react-native';
-import next from '../Assets/next.png';
-import Navbar from './Navbar';
+import Submit from '../Assets/Submit.png';
+import Navbar from '../Components/Navbar';
+import Todo from '../Components/Todo';
+
 
 class HomePage extends Component {
     render() {
         return (
-            <View style={styles.body}>
-                <Navbar/>
-                <View style={styles.container}>
-                    <TextInput
-                        style={styles.textInput}
-                        placeholder="Sen de derdini paylaş.."
-                    />
-                    <View
-                        style={styles.imageContainer}>
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('Publish')}>
-                            <Image source={next} style={styles.buttonNext}/>
-                        </TouchableOpacity>
+/*            <SafeAreaView>
+                <ScrollView >*/
+                    <View style={styles.body}>
+                        <Navbar/>
+                        <View style={styles.container}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder="Sen de derdini paylaş"
+                                placeholderTextColor="#234CAD"
+
+                            />
+                            <View
+                                style={styles.imageContainer}>
+                                <TouchableOpacity
+                                    onPress={() => this.props.navigation.navigate('Publish')}>
+                                    <Image source={Submit} style={styles.buttonNext}/>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        <Todo shortName='AB'
+                              topicTitle='Hayatımın en berbat günü'
+                              topicText='Sanırım dünyada gerçekten sıkıntılı insanla..'
+                        />
+                        <Todo shortName='ED'
+                              topicTitle='Kim ne yaptı bilmiyorum'
+                              topicText='Baktım ki herkes bişiler anlatıyor.. ben de…'
+                        />
+                        <Todo shortName='TA'
+                              topicTitle='Nasıl hızlı kurtulurum?'
+                              topicText='Fikirlerinizi bekliyorum, nasıl kurtulurum bu…'
+                        />
+                        <Todo shortName='AB'
+                              topicTitle='Hayatımın en berbat günü'
+                              topicText='Sanırım dünyada gerçekten sıkıntılı insanla..'
+                        />
+                        <Todo shortName='ED'
+                              topicTitle='Kim ne yaptı bilmiyorum'
+                              topicText='Baktım ki herkes bişiler anlatıyor.. ben de…'
+                        />
+                        <Todo shortName='TA'
+                              topicTitle='Nasıl hızlı kurtulurum?'
+                              topicText='Fikirlerinizi bekliyorum, nasıl kurtulurum bu…'
+                        />
+
                     </View>
-                </View>
-            </View>
+     /*           </ScrollView>
+            </SafeAreaView>*/
         );
     }
 }
@@ -47,8 +82,8 @@ const styles = StyleSheet.create({
     },
     textInput: {
         flex: 9,
-        fontSize: 20,
-        fontWeight: 'bold'
+        fontSize: 18,
+        opacity: 0.5
     },
     imageContainer: {
         flex: 3,
@@ -56,7 +91,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     body: {
-        backgroundColor: '#D6E3F9',
+        backgroundColor: '#F2F6FF',
         height: 1000
     }
 });

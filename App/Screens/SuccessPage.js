@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text,TouchableOpacity,Image} from 'react-native';
-import Navbar from './Navbar'
-import Input from './Input';
-import ok from '../Assets/ok.png'
+import Navbar from '../Components/Navbar'
+import Input from '../Components/Input';
+import Thumbs from '../Assets/Thumbs.png'
+import Todo from '../Components/Todo';
 
 
 class SuccessPage extends Component {
@@ -13,13 +14,19 @@ class SuccessPage extends Component {
                 <Input/>
 
                 <View style={styles.imageContainer}>
-                    <Image style={styles.imageStyle} source={ok}/>
+                    <Image style={styles.imageStyle} source={Thumbs}/>
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.text1}>Derdini Paylaştın!</Text>
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.text2}>Onaylandıktan sonra yayınlanacak!</Text>
+                </View>
+                <View style={{marginTop:20}}>
+                    <Todo shortName='AB'
+                          topicTitle='Hayatımın en berbat günü'
+                          topicText='Sanırım dünyada gerçekten sıkıntılı insanla..'
+                    />
                 </View>
                 <TouchableOpacity  onPress={()=>this.props.navigation.navigate('HomePage')} style={styles.buttonContainer}>
                     <Text style={styles.homepageBtnText}>Anasayfaya Dön</Text>
@@ -50,8 +57,8 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
     imageStyle : {
-        height:200,
-        width:200
+        height:150,
+        width:150
     },
     textContainer : {
         alignItems: 'center',
@@ -62,17 +69,17 @@ const styles = StyleSheet.create({
         color:'white'
     },
     text1 : {
-        fontSize:28,
-        color:'#3B4CDE',
-        fontWeight: 'bold'
+        fontSize:24,
+        color:'#234CAD',
+        marginTop: 10
     },
     text2 : {
-        fontSize:20,
-        color:'#3B4CDE',
-        fontWeight: 'bold'
+        fontSize:18,
+        color:'#234CAD',
+        marginTop: 10
     },
     body: {
-        backgroundColor: '#D6E3F9',
+        backgroundColor: '#F2F6FF',
         height: 1000
     }
 })
