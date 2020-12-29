@@ -31,10 +31,10 @@ class HomePage extends Component {
                     <Image source={Switch}/>
                     <Text style={styles.switchText}>Kullanım ve gizlilik koşullarını kabul ediyorum.</Text>
                 </View>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Success')}
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('SuccessPage')}
                                   style={styles.buttonContainer}>
                     <Text style={styles.publishButton}>Gönder</Text>
-                    <Image style={{width:10,height:17}} source={IconBtn}/>
+                    <Image style={styles.buttonIconStyle} source={IconBtn}/>
                 </TouchableOpacity>
             </View>
         );
@@ -72,6 +72,12 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    buttonIconStyle:{
+        width:10,
+        height:17,
+        position:'absolute',
+        right:15
     },
     textLabel: {
         paddingHorizontal: 13,

@@ -5,19 +5,19 @@ import {
     Image,
     StyleSheet,
     TextInput,
-    ScrollView,
-    SafeAreaView
+    ScrollView
 } from 'react-native';
 import Submit from '../Assets/Submit.png';
 import Navbar from '../Components/Navbar';
 import Todo from '../Components/Todo';
 
 
+
 class HomePage extends Component {
     render() {
         return (
-/*            <SafeAreaView>
-                <ScrollView >*/
+         <>
+                <ScrollView >
                     <View style={styles.body}>
                         <Navbar/>
                         <View style={styles.container}>
@@ -30,7 +30,7 @@ class HomePage extends Component {
                             <View
                                 style={styles.imageContainer}>
                                 <TouchableOpacity
-                                    onPress={() => this.props.navigation.navigate('Publish')}>
+                                    onPress={() => this.props.navigation.navigate('PublishPage')}>
                                     <Image source={Submit} style={styles.buttonNext}/>
                                 </TouchableOpacity>
                             </View>
@@ -59,10 +59,9 @@ class HomePage extends Component {
                               topicTitle='Nasıl hızlı kurtulurum?'
                               topicText='Fikirlerinizi bekliyorum, nasıl kurtulurum bu…'
                         />
-
                     </View>
-     /*           </ScrollView>
-            </SafeAreaView>*/
+              </ScrollView>
+            </>
         );
     }
 }
