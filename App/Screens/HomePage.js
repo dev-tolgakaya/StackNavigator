@@ -15,11 +15,12 @@ import Todo from '../Components/Todo';
 
 class HomePage extends Component {
     render() {
+        //console.log(this.props.navigation.toggleDrawer());
         return (
          <>
                 <ScrollView >
                     <View style={styles.body}>
-                        <Navbar/>
+                        <Navbar navigation={this.props.navigation}/>
                         <View style={styles.container}>
                             <TextInput
                                 style={styles.textInput}

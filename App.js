@@ -54,7 +54,7 @@ function firstScreenStack({ navigation }) {
                     headerStyle: {
                         backgroundColor: '#f4511e', //Set Header color
                     },
-                    headerShown: true
+                    headerShown: false
 
                 }}
             />
@@ -125,21 +125,21 @@ function App() {
         <NavigationContainer>
             <Drawer.Navigator
                 drawerContentOptions={{
-                    activeTintColor: '#e91e63',
+                    activeTintColor: '#e9e61e',
                     itemStyle: { marginVertical: 5 },
                 }}>
                 <Drawer.Screen
                     name="HomePage"
                     options={{ drawerLabel: 'Homepage' }}
-                    component={firstScreenStack} />
+                    component={HomePage} />
                 <Drawer.Screen
                     name="PublishPage"
                     options={{ drawerLabel: 'Publishpage' }}
-                    component={secondScreenStack} />
+                    component={PublishPage} />
                 <Drawer.Screen
                     name="SuccessPage"
                     options={{ drawerLabel: 'SuccessPage' }}
-                    component={thirdScreenStack} />
+                    component={SuccessPage} />
             </Drawer.Navigator>
         </NavigationContainer>
     );

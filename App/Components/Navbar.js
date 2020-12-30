@@ -20,7 +20,7 @@ class Navbar extends Component {
                     <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                         <Image source={Icon} style={styles.logo}/>
                         <Text style={styles.headerTitle}>derdana</Text>
-                        <TouchableOpacity onPress={()=> this.toggleDrawer()}><Image source={Menu} style={styles.menu}/></TouchableOpacity>
+                        <TouchableOpacity onPress={()=> this.props.navigation.toggleDrawer()}><Image source={Menu} style={styles.menu}/></TouchableOpacity>
                     </View>
                 </View>
               {/*  {
