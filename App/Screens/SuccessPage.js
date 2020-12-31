@@ -10,7 +10,7 @@ class SuccessPage extends Component {
     render() {
         return (
             <View style={styles.body}>
-                <Navbar/>
+                <Navbar navigation={this.props.navigation}/>
                 <Input/>
 
                 <View style={styles.imageContainer}>

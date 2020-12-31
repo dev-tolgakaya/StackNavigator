@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from "react-native";
 
 class Todo extends Component {
     render() {
-        const {shortName,topicTitle,topicText}=this.props
+        const {shortName, topicTitle, topicText} = this.props
         return (
             <View style={styles.todoContainer}>
                 <View style={styles.todoSection}>
@@ -27,41 +27,41 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 20,
         margin: 20,
-        marginTop:0,
+        marginTop: 0,
         backgroundColor: 'white',
         height: 100
     },
-    todoSection : {
-        flexDirection:'row',
-        padding:10,textAlign: 'center',
-        justifyContent:'center'
+    todoSection: {
+        flexDirection: 'row',
+        padding: 10, textAlign: 'center',
+        justifyContent: 'center'
     },
-    shortName:{
-        borderRadius:100,
-        backgroundColor:'#F2F6FF',
-        textAlign : 'center',
-        justifyContent:'center',
+    shortName: {
+        borderRadius: 100,
+        backgroundColor: '#F2F6FF',
+        textAlign: 'center',
+        justifyContent: 'center',
         width: 60,
-        height:60,
+        height: 60,
     },
-    shortNameText : {
+    shortNameText: {
         fontSize: 18,
         textAlign: 'center',
-        justifyContent:'center',
-        color:'#234CAD'
+        justifyContent: 'center',
+        color: '#234CAD'
     },
-    todoTopic:{
-        textAlign : 'center',
-        justifyContent:'center',
-        marginLeft:20
+    todoTopic: {
+        textAlign: 'center',
+        justifyContent: 'center',
+        marginLeft: 20
     },
-    todoTopicTitleText : {
+    todoTopicTitleText: {
         fontSize: 16,
-        color:'#234CAD'
+        color: '#234CAD'
     },
-    todoTopicText:{
+    todoTopicText: {
         fontSize: 12,
-        color:'#234CAD',
+        color: '#234CAD',
         marginTop: 5
     }
 })

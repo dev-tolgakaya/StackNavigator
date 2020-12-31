@@ -1,22 +1,49 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, TextInput, Text, TouchableOpacity, Image} from 'react-native';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {addTodo} from '../Redux/Actions/TodoActions';
 import Navbar from '../Components/Navbar'
 import Input from "../Components/Input"
 import IconBtn from '../Assets/IconBtn.png'
 import Switch from '../Assets/Switch.png'
 
-class HomePage extends Component {
+class PublishPage extends Component {
+    state = {
+        shortName: '',
+        topicTitle: '',
+        topicText: '',
+    }
+
+    addNewTodo = ()=> {
+        const{topicTitle,topicText} = this.state
+        if(topicText&&topicTitle){
+            const newTodo = {
+                shortName:'AB',
+                topicTitle:topicTitle,
+                topicText:topicText
+            }
+            this.props.addTodo(newTodo);
+            this.props.navigation.navigate('SuccessPage');
+        }
+        else{
+            alert('Butun alanlari doldurun')
+        }
+    }
 
     render() {
+        const {topicTitle, topicText} = this.state;
         return (
             <View style={styles.body}>
-                <Navbar/>
+                <Navbar navigation={this.props.navigation}/>
                 <Input/>
                 <Text style={styles.textLabel}>Başlık</Text>
                 <View style={styles.inputContainer}>
                     <TextInput
                         style={styles.textInput}
                         multiline={true}
+                        value={topicTitle}
+                        onChangeText={(topicTitle) => this.setState({topicTitle})}
                     />
                 </View>
                 <Text style={styles.textLabel}>Açıklama</Text>
@@ -25,13 +52,15 @@ class HomePage extends Component {
                         style={styles.textInput}
                         multiline={true}
                         numberOfLines={10}
+                        value={topicText}
+                        onChangeText={(topicText) => this.setState({topicText})}
                     />
                 </View>
                 <View style={styles.switchContainer}>
                     <Image source={Switch}/>
                     <Text style={styles.switchText}>Kullanım ve gizlilik koşullarını kabul ediyorum.</Text>
                 </View>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('SuccessPage')}
+                <TouchableOpacity onPress={this.addNewTodo}
                                   style={styles.buttonContainer}>
                     <Text style={styles.publishButton}>Gönder</Text>
                     <Image style={styles.buttonIconStyle} source={IconBtn}/>
@@ -40,6 +69,21 @@ class HomePage extends Component {
         );
     }
 }
+
+
+const mapStateToProps = (state) => {
+    const {todos} = state
+    return {todos}
+};
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        addTodo,
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(PublishPage);
+
 
 const styles = StyleSheet.create({
     inputContainer: {
@@ -73,11 +117,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    buttonIconStyle:{
-        width:10,
-        height:17,
-        position:'absolute',
-        right:15
+    buttonIconStyle: {
+        width: 10,
+        height: 17,
+        position: 'absolute',
+        right: 15
     },
     textLabel: {
         paddingHorizontal: 13,
@@ -110,4 +154,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default HomePage;
+

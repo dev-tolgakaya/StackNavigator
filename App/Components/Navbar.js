@@ -8,12 +8,7 @@ class Navbar extends Component {
     state = {
         isOpen: false
     }
-
     render() {
-           /* const toggleDrawer = () => {
-                //Props to open/close the drawer
-                props.navigation.toggleDrawer();
-            };*/
         return (
             <View>
                 <View style={styles.sectionContainer}>

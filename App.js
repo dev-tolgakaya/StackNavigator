@@ -1,8 +1,12 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react'
+import * as StoreElements from './App/Redux/Store/store'
+
 import HomePage from './App/Screens/HomePage';
 import PublishPage from './App/Screens/PublishPage';
 import SuccessPage from './App/Screens/SuccessPage';
@@ -12,20 +16,16 @@ import {
     Image
 } from 'react-native';
 
-
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const  NavigationDrawerStructure = (props)=> {
-    //Structure for the navigatin Drawer
+const NavigationDrawerStructure = (props) => {
     const toggleDrawer = () => {
-        //Props to open/close the drawer
         props.navigationProps.toggleDrawer();
     };
-
     return (
-        <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity onPress={()=> toggleDrawer()}>
+        <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={() => toggleDrawer()}>
                 {/*Donute Button Image */}
                 <Image
                     source={{uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png'}}
@@ -40,14 +40,14 @@ const  NavigationDrawerStructure = (props)=> {
     );
 }
 
-function firstScreenStack({ navigation }) {
+function firstScreenStack({navigation}) {
     return (
         <Stack.Navigator initialRouteName="HomePage">
             <Stack.Screen
                 name="HomePage"
                 component={HomePage}
                 options={{
-                    headerLeft: ()=>
+                    headerLeft: () =>
                         <NavigationDrawerStructure
                             navigationProps={navigation}
                         />,
@@ -62,12 +62,12 @@ function firstScreenStack({ navigation }) {
     );
 }
 
-function secondScreenStack({ navigation }) {
+function secondScreenStack({navigation}) {
     return (
         <Stack.Navigator
             initialRouteName="PublishPage"
             screenOptions={{
-                headerLeft: ()=>
+                headerLeft: () =>
                     <NavigationDrawerStructure
                         navigationProps={navigation}
                     />,
@@ -91,12 +91,12 @@ function secondScreenStack({ navigation }) {
     );
 }
 
-function thirdScreenStack({ navigation }) {
+function thirdScreenStack({navigation}) {
     return (
         <Stack.Navigator
             initialRouteName="SuccessPage"
             screenOptions={{
-                headerLeft: ()=>
+                headerLeft: () =>
                     <NavigationDrawerStructure
                         navigationProps={navigation}
                     />,
@@ -122,26 +122,30 @@ function thirdScreenStack({ navigation }) {
 
 function App() {
     return (
-        <NavigationContainer>
-            <Drawer.Navigator
-                drawerContentOptions={{
-                    activeTintColor: '#e9e61e',
-                    itemStyle: { marginVertical: 5 },
-                }}>
-                <Drawer.Screen
-                    name="HomePage"
-                    options={{ drawerLabel: 'Homepage' }}
-                    component={HomePage} />
-                <Drawer.Screen
-                    name="PublishPage"
-                    options={{ drawerLabel: 'Publishpage' }}
-                    component={PublishPage} />
-                <Drawer.Screen
-                    name="SuccessPage"
-                    options={{ drawerLabel: 'SuccessPage' }}
-                    component={SuccessPage} />
-            </Drawer.Navigator>
-        </NavigationContainer>
+        <Provider store={StoreElements.store}>
+            <PersistGate persistor={StoreElements.persistedStore} loading={null}>
+                <NavigationContainer>
+                    <Drawer.Navigator
+                        drawerContentOptions={{
+                            activeTintColor: '#e9e61e',
+                            itemStyle: {marginVertical: 5},
+                        }}>
+                        <Drawer.Screen
+                            name="HomePage"
+                            options={{drawerLabel: 'Homepage'}}
+                            component={HomePage}/>
+                        <Drawer.Screen
+                            name="PublishPage"
+                            options={{drawerLabel: 'Publishpage'}}
+                            component={PublishPage}/>
+                        <Drawer.Screen
+                            name="SuccessPage"
+                            options={{drawerLabel: 'SuccessPage'}}
+                            component={SuccessPage}/>
+                    </Drawer.Navigator>
+                </NavigationContainer>
+            </PersistGate>
+        </Provider>
     );
 }
 
@@ -149,30 +153,6 @@ export default App;
 
 
 
-
-// function NavStack() {
-//     return (
-//         <Stack.Navigator
-//             initialRouteName="HomePage"
-//             screenOptions={{
-//                 headerShown: false
-//             }}
-//         >
-//             <Stack.Screen name="HomePage" component={HomePage} />
-//             <Stack.Screen name="Publish" component={PublishPage} />
-//             <Stack.Screen name="Success" component={SuccessPage} />
-//         </Stack.Navigator>
-//     );
-//
-// }
-
-/*export default function App() {
-    return (
-            <NavigationContainer>
-                <NavStack />
-            </NavigationContainer>
-    );
-}*/
 
 
 

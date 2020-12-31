@@ -5,17 +5,24 @@ import {
     Image,
     StyleSheet,
     TextInput,
-    ScrollView
+    ScrollView,
+    Text
 } from 'react-native';
 import Submit from '../Assets/Submit.png';
 import Navbar from '../Components/Navbar';
-import Todo from '../Components/Todo';
+import Todos from "../Components/Todos";
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import { deleteTodo} from '../Redux/Actions/TodoActions';
 
 
 
 class HomePage extends Component {
+    clean =()=>{
+        this.props.deleteTodo()
+    }
     render() {
-        //console.log(this.props.navigation.toggleDrawer());
+
         return (
          <>
                 <ScrollView >
@@ -36,30 +43,11 @@ class HomePage extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <Todo shortName='AB'
-                              topicTitle='Hayatımın en berbat günü'
-                              topicText='Sanırım dünyada gerçekten sıkıntılı insanla..'
-                        />
-                        <Todo shortName='ED'
-                              topicTitle='Kim ne yaptı bilmiyorum'
-                              topicText='Baktım ki herkes bişiler anlatıyor.. ben de…'
-                        />
-                        <Todo shortName='TA'
-                              topicTitle='Nasıl hızlı kurtulurum?'
-                              topicText='Fikirlerinizi bekliyorum, nasıl kurtulurum bu…'
-                        />
-                        <Todo shortName='AB'
-                              topicTitle='Hayatımın en berbat günü'
-                              topicText='Sanırım dünyada gerçekten sıkıntılı insanla..'
-                        />
-                        <Todo shortName='ED'
-                              topicTitle='Kim ne yaptı bilmiyorum'
-                              topicText='Baktım ki herkes bişiler anlatıyor.. ben de…'
-                        />
-                        <Todo shortName='TA'
-                              topicTitle='Nasıl hızlı kurtulurum?'
-                              topicText='Fikirlerinizi bekliyorum, nasıl kurtulurum bu…'
-                        />
+                       <Todos/>
+                        <TouchableOpacity
+                            onPress={this.clean}>
+                            <Text>Temizle</Text>
+                        </TouchableOpacity>
                     </View>
               </ScrollView>
             </>
@@ -96,4 +84,19 @@ const styles = StyleSheet.create({
     }
 });
 
-export default HomePage;
+const mapStateToProps = (state) => {
+    const {todos} = state
+    return {todos}
+};
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        deleteTodo,
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+
+
+
+
