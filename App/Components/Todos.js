@@ -7,19 +7,18 @@ import {connect} from 'react-redux';
 
 class Todos extends Component {
     render() {
-        console.log(this.props);
         return (
             <View>
                 {
-                    this.props.todos.todos.map((todo,index) => {
+                    this.props.todos ? this.props.todos.map((todo,index) => {
                         return (
                             <Todo key={index}
-                                shortName={todo.shortName}
-                                topicTitle={todo.topicTitle}
-                                topicText={todo.topicText}
+                                shortName={'AB'}
+                                title={todo.title}
+                                body={todo.body}
                             />
                         )
-                    })
+                    }):null
                 }
             </View>
         );
@@ -28,7 +27,7 @@ class Todos extends Component {
 
 const mapStateToProps = (state) => {
     const {todos} = state
-    return {todos}
+    return todos
 };
 
 export default connect(mapStateToProps)(Todos);

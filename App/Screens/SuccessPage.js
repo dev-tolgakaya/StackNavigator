@@ -24,8 +24,8 @@ class SuccessPage extends Component {
                 </View>
                 <View style={{marginTop:20}}>
                     <Todo shortName='AB'
-                          topicTitle='Hayatımın en berbat günü'
-                          topicText='Sanırım dünyada gerçekten sıkıntılı insanla..'
+                          title='Hayatımın en berbat günü'
+                          body='Sanırım dünyada gerçekten sıkıntılı insanla..'
                     />
                 </View>
                 <TouchableOpacity  onPress={()=>this.props.navigation.navigate('HomePage')} style={styles.buttonContainer}>

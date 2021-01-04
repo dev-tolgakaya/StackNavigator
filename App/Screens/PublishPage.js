@@ -7,32 +7,57 @@ import Navbar from '../Components/Navbar'
 import Input from "../Components/Input"
 import IconBtn from '../Assets/IconBtn.png'
 import Switch from '../Assets/Switch.png'
+import axios from "axios";
 
 class PublishPage extends Component {
     state = {
         shortName: '',
-        topicTitle: '',
-        topicText: '',
+        title: '',
+        body: '',
     }
 
-    addNewTodo = ()=> {
-        const{topicTitle,topicText} = this.state
-        if(topicText&&topicTitle){
+    componentDidMount() {
+        this.title = '';
+        this.body = '';
+    }
+
+    addNewTodo = async () => {
+        const {title, body} = this.state
+        if (title && body) {
             const newTodo = {
-                shortName:'AB',
-                topicTitle:topicTitle,
-                topicText:topicText
+                shortName: 'AB',
+                title: title,
+                body: body
             }
-            this.props.addTodo(newTodo);
-            this.props.navigation.navigate('SuccessPage');
+           /* await fetch('http://localhost:4000/posts', {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: newTodo.title,
+                    body: newTodo.body,
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((json) => console.log(json)).catch(err => console.log(err))*/
+            await axios.post("http://localhost:4000/posts", newTodo).then(res=>this.props.addTodo(res.data))
+            await this.cleanInputs();
+            await this.props.navigation.navigate('SuccessPage');
+
+        } else {
+            alert('Lütfen Bütün Alanları Doldurun.')
         }
-        else{
-            alert('Butun alanlari doldurun')
-        }
+    }
+
+    cleanInputs() {
+
+        this.topicTitle = '';
+        this.topicText = '';
     }
 
     render() {
-        const {topicTitle, topicText} = this.state;
+        const {title, body} = this.state;
         return (
             <View style={styles.body}>
                 <Navbar navigation={this.props.navigation}/>
@@ -42,8 +67,8 @@ class PublishPage extends Component {
                     <TextInput
                         style={styles.textInput}
                         multiline={true}
-                        value={topicTitle}
-                        onChangeText={(topicTitle) => this.setState({topicTitle})}
+                        value={title}
+                        onChangeText={(title) => this.setState({title})}
                     />
                 </View>
                 <Text style={styles.textLabel}>Açıklama</Text>
@@ -52,8 +77,8 @@ class PublishPage extends Component {
                         style={styles.textInput}
                         multiline={true}
                         numberOfLines={10}
-                        value={topicText}
-                        onChangeText={(topicText) => this.setState({topicText})}
+                        value={body}
+                        onChangeText={(body) => this.setState({body})}
                     />
                 </View>
                 <View style={styles.switchContainer}>

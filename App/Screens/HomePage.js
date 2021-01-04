@@ -13,19 +13,27 @@ import Navbar from '../Components/Navbar';
 import Todos from "../Components/Todos";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { deleteTodo} from '../Redux/Actions/TodoActions';
-
+import {deleteTodo,setTodo} from '../Redux/Actions/TodoActions';
+import axios from "axios";
 
 
 class HomePage extends Component {
-    clean =()=>{
+    clean = () => {
         this.props.deleteTodo()
     }
+
+    componentDidMount = async () =>  {
+        /*fetch('http://localhost:4000/posts')
+            .then((response) => response.json())
+            .then((json) => this.props.setTodo(json));*/
+        await axios.get("http://localhost:4000/posts").then(res=>this.props.setTodo(res.data))
+    }
+
     render() {
 
         return (
-         <>
-                <ScrollView >
+            <>
+                <ScrollView>
                     <View style={styles.body}>
                         <Navbar navigation={this.props.navigation}/>
                         <View style={styles.container}>
@@ -43,13 +51,13 @@ class HomePage extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                       <Todos/>
+                        <Todos/>
                         <TouchableOpacity
                             onPress={this.clean}>
                             <Text>Temizle</Text>
                         </TouchableOpacity>
                     </View>
-              </ScrollView>
+                </ScrollView>
             </>
         );
     }
@@ -91,7 +99,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => (
     bindActionCreators({
-        deleteTodo,
+        deleteTodo,setTodo
     }, dispatch)
 );
 

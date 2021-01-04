@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from "react-native";
 
 class Todo extends Component {
     render() {
-        const {shortName, topicTitle, topicText} = this.props
+        const {shortName, title, body} = this.props
         return (
             <View style={styles.todoContainer}>
                 <View style={styles.todoSection}>
@@ -11,8 +11,8 @@ class Todo extends Component {
                         <Text style={styles.shortNameText}>{shortName}</Text>
                     </View>
                     <View style={styles.todoTopic}>
-                        <Text style={styles.todoTopicTitleText}>{topicTitle}</Text>
-                        <Text style={styles.todoTopicText}>{topicText}</Text>
+                        <Text style={styles.todoTopicTitleText}>{title}</Text>
+                        <Text style={styles.todoTopicText}>{body}</Text>
                     </View>
                 </View>
             </View>

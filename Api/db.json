@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "shortName": "AB",
+      "title": "Sadd",
+      "body": "Asdasd ",
+      "id": 1
+    },
+    {
+      "shortName": "AB",
+      "title": "Add  asdasdasd ",
+      "body": "Asdasd asdasdasd ",
+      "id": 2
+    }
+  ]
+}

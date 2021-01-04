@@ -2,17 +2,19 @@ import {combineReducers} from 'redux';
 
 const INITIAL_STATE = {
     todos: [
-        {
-            shortName: 'AB',
-            topicTitle: 'Hayatımın en berbat günü',
-            topicText: 'Sanırım dünyada gerçekten sıkıntılı insanla..'
-        }
+
 
     ]
 };
 
 const TodoReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case 'SET_TODO' :{
+            const setTodos = action.payload
+            const newState = {todos:setTodos}
+            return  newState
+        }
+
         case 'ADD_TODO': {
             const {todos} = state;
             const addedTodos = [
