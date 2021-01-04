@@ -14,7 +14,7 @@ import Todos from "../Components/Todos";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {deleteTodo,setTodo} from '../Redux/Actions/TodoActions';
-import axios from "axios";
+import {posts} from "../../Api/api";
 
 
 class HomePage extends Component {
@@ -26,7 +26,7 @@ class HomePage extends Component {
         /*fetch('http://localhost:4000/posts')
             .then((response) => response.json())
             .then((json) => this.props.setTodo(json));*/
-        await axios.get("http://localhost:4000/posts").then(res=>this.props.setTodo(res.data))
+        await posts().then(res=>this.props.setTodo(res.data)).catch(err => console.log(err))
     }
 
     render() {

@@ -8,12 +8,18 @@ import Input from "../Components/Input"
 import IconBtn from '../Assets/IconBtn.png'
 import Switch from '../Assets/Switch.png'
 import axios from "axios";
+import {postSave} from "../../Api/api";
 
 class PublishPage extends Component {
     state = {
         shortName: '',
         title: '',
         body: '',
+    }
+
+    componentWillMount() {
+        this.title = '';
+        this.body = '';
     }
 
     componentDidMount() {
@@ -41,7 +47,7 @@ class PublishPage extends Component {
             })
                 .then((response) => response.json())
                 .then((json) => console.log(json)).catch(err => console.log(err))*/
-            await axios.post("http://localhost:4000/posts", newTodo).then(res=>this.props.addTodo(res.data))
+            await postSave(newTodo).then(res=>this.props.addTodo(res.data)).catch(err => console.log(err))
             await this.cleanInputs();
             await this.props.navigation.navigate('SuccessPage');
 
@@ -49,11 +55,9 @@ class PublishPage extends Component {
             alert('Lütfen Bütün Alanları Doldurun.')
         }
     }
-
     cleanInputs() {
-
-        this.topicTitle = '';
-        this.topicText = '';
+        this.title = '';
+        this.body = '';
     }
 
     render() {
@@ -130,6 +134,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         height: 180,
         borderRadius: 15,
+        fontSize: 20,
+        fontWeight: 'bold',
+
     },
     buttonContainer: {
         flexDirection: 'row',
@@ -157,7 +164,8 @@ const styles = StyleSheet.create({
     textInput: {
         flex: 9,
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        opacity:0.5
     },
     switchContainer: {
         flexDirection: 'row',

@@ -1,10 +1,7 @@
 import {combineReducers} from 'redux';
 
 const INITIAL_STATE = {
-    todos: [
-
-
-    ]
+    todos: []
 };
 
 const TodoReducer = (state = INITIAL_STATE, action) => {
